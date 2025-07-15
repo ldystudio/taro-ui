@@ -18,6 +18,7 @@ const defaultProps: AtCalendarDefaultProps = {
   marks: [],
   isSwiper: true,
   hideArrow: false,
+  hideDate: false,
   isVertical: false,
   selectedDates: [],
   isMultiSelect: false,
@@ -281,6 +282,7 @@ export default class AtCalendar extends React.Component<
       isSwiper,
       className,
       hideArrow,
+      hideDate,
       isVertical,
       monthFormat,
       selectedDates
@@ -292,6 +294,7 @@ export default class AtCalendar extends React.Component<
           minDate={minDate}
           maxDate={maxDate}
           hideArrow={hideArrow}
+          hideDate={hideDate}
           monthFormat={monthFormat}
           generateDate={generateDate}
           onPreMonth={this.handleClickPreMonth}

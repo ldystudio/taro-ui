@@ -97,6 +97,8 @@ export interface AtCalendarPropsBase {
 
   hideArrow?: boolean
 
+  hideDate?: boolean
+
   isVertical?: boolean
 
   className?: Calendar.classNameType
@@ -145,6 +147,8 @@ export interface AtCalendarDefaultProps {
 
   hideArrow: boolean
 
+  hideDate: boolean
+
   isVertical: boolean
 
   isMultiSelect: boolean
@@ -171,6 +175,8 @@ export interface AtCalendarControllerProps {
   maxDate?: Calendar.DateArg
 
   hideArrow: boolean
+
+  hideDate: boolean
 
   monthFormat: string
 

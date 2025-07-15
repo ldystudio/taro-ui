@@ -94,6 +94,10 @@ export default function generateCalendarGroup(
     // 生成下个月的日期
     let i = 1
     while (list.length < TOTAL) {
+      if (list.length % 7 === 0) {
+        break
+      }
+
       const thisDate = lastDate.add(i++, 'day').startOf('day')
       let item = {
         marks: [],

@@ -6,13 +6,13 @@ export default class AtCalendarHeader extends React.Component {
     return (
       <View className='at-calendar__header header'>
         <View className='header__flex'>
-          <View className='header__flex-item'>日</View>
-          <View className='header__flex-item'>一</View>
-          <View className='header__flex-item'>二</View>
-          <View className='header__flex-item'>三</View>
-          <View className='header__flex-item'>四</View>
-          <View className='header__flex-item'>五</View>
-          <View className='header__flex-item'>六</View>
+          <View className='header__flex-item'>周日</View>
+          <View className='header__flex-item'>周一</View>
+          <View className='header__flex-item'>周二</View>
+          <View className='header__flex-item'>周三</View>
+          <View className='header__flex-item'>周四</View>
+          <View className='header__flex-item'>周五</View>
+          <View className='header__flex-item'>周六</View>
         </View>
       </View>
     )

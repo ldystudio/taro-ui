@@ -12,7 +12,7 @@ export default class AtCalendarController extends React.Component<
   AtCalendarControllerState
 > {
   public render(): JSX.Element {
-    const { generateDate, minDate, maxDate, monthFormat, hideArrow } =
+    const { generateDate, minDate, maxDate, monthFormat, hideArrow, hideDate } =
       this.props
 
     const dayjsDate: Dayjs = dayjs(generateDate)
@@ -42,18 +42,20 @@ export default class AtCalendarController extends React.Component<
             onClick={this.props.onPreMonth.bind(this, isMinMonth)}
           />
         )}
-        <Picker
-          mode='date'
-          fields='month'
-          end={maxDateValue}
-          start={minDateValue}
-          onChange={this.props.onSelectDate}
-          value={dayjsDate.format('YYYY-MM')}
-        >
-          <Text className='controller__info'>
-            {dayjsDate.format(monthFormat)}
-          </Text>
-        </Picker>
+        {hideDate ? null : (
+          <Picker
+            mode='date'
+            fields='month'
+            end={maxDateValue}
+            start={minDateValue}
+            onChange={this.props.onSelectDate}
+            value={dayjsDate.format('YYYY-MM')}
+          >
+            <Text className='controller__info'>
+              {dayjsDate.format(monthFormat)}
+            </Text>
+          </Picker>
+        )}
         {hideArrow ? null : (
           <View
             className={classnames(

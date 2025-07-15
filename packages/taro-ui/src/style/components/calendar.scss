@@ -17,7 +17,7 @@
       &-item {
         @include flex(0 0 calc(100% / 7));
 
-        font-size: 30px;
+        font-size: 24px;
       }
     }
   }
@@ -33,20 +33,23 @@
       .flex__item {
         @include flex(0 0 calc(100% / 7));
 
-        font-size: 30px;
+        font-size: 24px;
         text-align: center;
         position: relative;
-        margin: 5px 0;
+        margin: 0;
+        border-radius: 20px;
+        border: solid 4px #fff;
+        overflow: hidden;
 
         &-container {
-          @include align-items(center);
+          @include align-items(flex-start);
           @include display-flex;
 
           width: $at-calendar-day-size;
           height: $at-calendar-day-size;
           margin-left: auto;
           margin-right: auto;
-          border-radius: 50%;
+          padding-top: 12px;
 
           .container-text {
             @include flex;
@@ -56,10 +59,15 @@
         &-extra {
           .extra-marks {
             position: absolute;
-            bottom: 5px;
+            bottom: 8px;
             line-height: 0;
             left: 50%;
             transform: translateX(-50%);
+
+            .mark-icon {
+              width: $at-calendar-mark-size;
+              height: $at-calendar-mark-size;
+            }
 
             .mark {
               width: $at-calendar-mark-size;
@@ -77,8 +85,18 @@
           }
         }
 
+        &--previous {
+          color: #00000099;
+          background-color: #f2f2f2;
+        }
+
+        &--marked {
+          color: #1dc18c;
+          background-color: $at-calendar-main-color;
+        }
+
         &--today {
-          color: $at-calendar-main-color;
+          color: #7a66ff;
           font-weight: bolder;
         }
 
@@ -87,17 +105,18 @@
         }
 
         &--selected {
-          color: white;
-          background-color: rgba($color: $at-calendar-main-color, $alpha: 0.7);
+          color: #7a66ff;
+          background-color: #eee8ff !important;
+          border: solid 4px #7a66ff;
 
           &-head {
-            border-top-left-radius: 40px;
-            border-bottom-left-radius: 40px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
           }
 
           &-tail {
-            border-top-right-radius: 40px;
-            border-bottom-right-radius: 40px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
           }
 
           /* stylelint-disable-next-line */
@@ -109,10 +128,7 @@
             background-color: transparent;
 
             .flex__item-container {
-              background-color: rgba(
-                $color: $at-calendar-main-color,
-                $alpha: 0.7
-              );
+              background-color: #eee8ff;
             }
           }
         }
@@ -137,7 +153,7 @@
       background-position: center;
       background-color: #f7f8fc;
       background-repeat: no-repeat;
-      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAADzoH0MAAAAAXNSR0IArs4c6QAAAnFJREFUOBGVVF1rE0EUnXt3tzFtWmqjKYKfqIhVa1L8FQVRWtwnXwRhidXGDwQf81oCUQMioZRCHwNSgiD4lD9QSYVKsA8KbaW1jbamX8adnWsmMnESbYz7cs6ee8/ZnZm7y9h/Xk/Gs70TE9lOZQNFWsGx1IvDJoozxNDttNpmHOfyTssBj59PHxceP6keREDlYPvBGUMJzTD5LHuKhHtC70EEQe72atMAIoLu0MWzRPxInZnEdxZib2I37L2XEI/HsSvYd44AQrqZIW5b3J8fHR0sS/2ve5DJZIzFFexnSD262QAs+c1js45zyVU6KqIwnU5bS58x0mhGhusbaz153Sw9dW+QSr3yCdwJe4wCKlCigbAWiw7PAYDQdclrAclkxk8+iDBifr3JMq3lO86VQsVMuq549RQSU687mOcNANE+VfiFxuLd6NX3e5llD8qjskqb54E8n24mk5Yf3B6ab2auBsgGC8Q7QOJ1AS6ExrSZ12s6r57CyIi99cNgswywtkkIzDB2eSSdftmuGxp57RgfOfY38HlvRWVNqgmYsDb57sDkZK5hb1RHZQ9+U8bu37S/MtOc0zUg8G2U1yOV4WrTdcXrAqT4MDq0yokXVINEwb32pS9WOJfLmboueW0OGgtP05mj3IXTum6iuXHogDtr27an9D/eQBVijr2AiB/VvUQuePenNXZBfmhKrxEl6Hjv1vAHA2lJ1wRBcH9vf5+cH6k3DZANsei1eWCwIrm6uOf1Jsenq8v7Z4ActFJxrsBMo6gC0GAebPHq/Z6bqJoVyn/EQpGFK08MmF2B/Oj1wZKqtYzxeM5MJKY6dMNPQnnePR8FubkAAAAASUVORK5CYII=");
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAADzoH0MAAAAAXNSR0IArs4c6QAAAnFJREFUOBGVVF1rE0EUnXt3tzFtWmqjKYKfqIhVa1L8FQVRWtwnXwRhidXGDwQf81oCUQMioZRCHwNSgiD4lD9QSYVKsA8KbaW1jbamX8adnWsmMnESbYz7cs6ee8/ZnZm7y9h/Xk/Gs70TE9lOZQNFWsGx1IvDJoozxNDttNpmHOfyTssBj59PHxceP6keREDlYPvBGUMJzTD5LHuKhHtC70EEQe72atMAIoLu0MWzRPxInZnEdxZib2I37L2XEI/HsSvYd44AQrqZIW5b3J8fHR0sS/2ve5DJZIzFFexnSD262QAs+c1js45zyVU6KqIwnU5bS58x0mhGhusbaz153Sw9dW+QSr3yCdwJe4wCKlCigbAWiw7PAYDQdclrAclkxk8+iDBifr3JMq3lO86VQsVMuq549RQSU687mOcNANE+VfiFxuLd6NX3e5llD8qjskqb54E8n24mk5Yf3B6ab2auBsgGC8Q7QOJ1AS6ExrSZ12s6r57CyIi99cNgswywtkkIzDB2eSSdftmuGxp57RgfOfY38HlvRWVNqgmYsDb57sDkZK5hb1RHZQ9+U8bu37S/MtOc0zUg8G2U1yOV4WrTdcXrAqT4MDq0yokXVINEwb32pS9WOJfLmboueW0OGgtP05mj3IXTum6iuXHogDtr27an9D/eQBVijr2AiB/VvUQuePenNXZBfmhKrxEl6Hjv1vAHA2lJ1wRBcH9vf5+cH6k3DZANsei1eWCwIrm6uOf1Jsenq8v7Z4ActFJxrsBMo6gC0GAebPHq/Z6bqJoVyn/EQpGFK08MmF2B/Oj1wZKqtYzxeM5MJKY6dMNPQnnePR8FubkAAAAASUVORK5CYII=');
 
       &--right {
         transform: rotate(180deg);
@@ -176,7 +192,7 @@
   &--weapp,
   &--swan {
     .main__body {
-      height: 480px;
+      height: auto;
     }
   }
 }
