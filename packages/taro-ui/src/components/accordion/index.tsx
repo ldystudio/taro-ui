@@ -76,8 +76,18 @@ export default class AtAccordion extends React.Component<
   }
 
   public render(): JSX.Element {
-    const { customStyle, className, title, icon, hasBorder, open, note } =
-      this.props
+    const {
+      customStyle,
+      className,
+      title,
+      icon,
+      imageIcon,
+      hasBorder,
+      open,
+      note,
+      remarks,
+      isDisabled
+    } = this.props
     const { wrapperHeight } = this.state
 
     const rootCls = classNames('at-accordion', className)
@@ -111,17 +121,26 @@ export default class AtAccordion extends React.Component<
 
     return (
       <View className={rootCls} style={customStyle}>
-        <View className={headerCls} onClick={this.handleClick}>
+        <View
+          className={headerCls}
+          onClick={e => !isDisabled && this.handleClick(e)}
+        >
           {icon && icon.value && (
             <Text className={iconCls} style={iconStyle}></Text>
           )}
+          {imageIcon}
           <View className='at-accordion__info'>
-            <View className='at-accordion__info__title'>{title}</View>
-            <View className='at-accordion__info__note'>{note}</View>
+            <Text className='at-accordion__info__title'>{title}</Text>
+            <View className='at-accordion__info__note'>
+              <Text>{note}</Text>
+              <Text>{remarks}</Text>
+            </View>
           </View>
-          <View className={arrowCls}>
-            <Text className='at-icon at-icon-chevron-down'></Text>
-          </View>
+          {!isDisabled && (
+            <View className={arrowCls}>
+              <Text className='at-icon at-icon-chevron-down'></Text>
+            </View>
+          )}
         </View>
         <View style={contentStyle} className={contentCls}>
           <View
@@ -144,7 +163,8 @@ AtAccordion.defaultProps = {
   note: '',
   icon: { value: '' },
   hasBorder: true,
-  isAnimation: true
+  isAnimation: true,
+  isDisabled: false
 }
 
 AtAccordion.propTypes = {

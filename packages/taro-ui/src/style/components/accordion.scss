@@ -13,7 +13,7 @@
     font-size: $font-size-lg;
     box-sizing: border-box;
     @include hairline-bottom();
-    @include active;
+    // @include active;
 
     &--noborder {
       &::after {
@@ -23,24 +23,31 @@
   }
 
   &__info {
+    display: flex;
     flex: 1;
-    text-align: left;
-    line-height: 1.6;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
 
     &__title {
       @include line;
 
-      color: inherit;
-      font-size: inherit;
+      color: #1c1c1e;
+      font-size: 40px;
       line-height: $line-height-zh;
+      min-width: 60px;
     }
 
     &__note {
       @include line;
-
-      color: $at-list-content-color;
-      font-size: $font-size-base;
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #1c1c1e;
+      font-size: 28px;
       line-height: $line-height-zh;
+      opacity: 0.8;
     }
   }
 
@@ -54,7 +61,8 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    transition: height 500ms $ease-in-sine;
+    transition: height 300ms $ease-in-sine;
+    // margin-top: 12px;
     @include hairline-top();
 
     &--inactive {

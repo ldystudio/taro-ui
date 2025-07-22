@@ -1,4 +1,4 @@
-import { ComponentClass } from 'react'
+import { ComponentClass, ReactNode } from 'react'
 import { CommonEvent } from '@tarojs/components/types/common'
 
 import AtComponent, { AtIconBaseProps } from './base'
@@ -19,6 +19,10 @@ export interface AtAccordionProps extends AtComponent {
    */
   icon?: AtIconBaseProps
   /**
+   * 自定义图标
+   */
+  imageIcon?: ReactNode
+  /**
    * 是否开启动画
    * @default true
    * @since v2.0.0-beta.3
@@ -34,9 +38,17 @@ export interface AtAccordionProps extends AtComponent {
    */
   note?: string
   /**
+   * 描述信息2
+   */
+  remarks?: string
+  /**
    * 点击头部触发事件
    */
   onClick?: (open: boolean, event: CommonEvent) => void
+  /**
+   * 是否禁用
+   */
+  isDisabled?: boolean
 }
 
 export interface AtAccordionState {

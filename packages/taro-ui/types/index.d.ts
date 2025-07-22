@@ -1,5 +1,5 @@
 import { ComponentClass } from 'react'
-import { Props } from '../src/components/calendar/interface'
+import { AtCalendarProps } from './calendar'
 
 export { default as AtActionSheet, AtActionSheetItem } from './action-sheet'
 export { default as AtActivityIndicator } from './activity-indicator'
@@ -35,7 +35,7 @@ export { default as AtTimeline } from './timeline'
 export { default as AtToast } from './toast'
 export { default as AtTabsPane } from './tabs-pane'
 export { default as AtSwipeAction } from './swipe-action'
-export { default as AtAccordion } from './accordion'
+export { default as AtAccordion, AtAccordionProps } from './accordion'
 export { default as AtLoadMore } from './load-more'
 export { default as AtDivider } from './divider'
 export { default as AtCountdown } from './countdown'
@@ -48,7 +48,7 @@ export { default as AtIndexes } from './indexes'
 export { default as AtRange } from './range'
 export { default as AtFloatButton } from './float-button'
 
-export declare const AtCalendar: ComponentClass<Props>
+export declare const AtCalendar: ComponentClass<AtCalendarProps>
 
 export declare const AtModalHeader: ComponentClass
 export declare const AtModalAction: ComponentClass
