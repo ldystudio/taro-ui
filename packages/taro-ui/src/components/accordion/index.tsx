@@ -121,10 +121,7 @@ export default class AtAccordion extends React.Component<
 
     return (
       <View className={rootCls} style={customStyle}>
-        <View
-          className={headerCls}
-          onClick={e => !isDisabled && this.handleClick(e)}
-        >
+        <View className={headerCls} onClick={this.handleClick}>
           {icon && icon.value && (
             <Text className={iconCls} style={iconStyle}></Text>
           )}
