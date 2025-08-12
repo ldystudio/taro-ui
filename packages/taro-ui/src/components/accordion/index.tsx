@@ -22,7 +22,7 @@ export default class AtAccordion extends React.Component<
     this.startOpen = false
     this.state = {
       componentId: uuid(),
-      wrapperHeight: 0
+      wrapperHeight: 'unset'
     }
   }
 
@@ -111,7 +111,9 @@ export default class AtAccordion extends React.Component<
       color: (icon && icon.color) || '',
       fontSize: (icon && `${icon.size}px`) || ''
     }
-    const contentStyle = { height: `${wrapperHeight}px` }
+    const contentStyle = {
+      height: wrapperHeight === 'unset' ? wrapperHeight : `${wrapperHeight}px`
+    }
 
     if (this.isCompleted) {
       contentStyle.height = ''

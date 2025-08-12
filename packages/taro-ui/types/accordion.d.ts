@@ -53,7 +53,7 @@ export interface AtAccordionProps extends AtComponent {
 
 export interface AtAccordionState {
   componentId?: string
-  wrapperHeight: number
+  wrapperHeight: number | 'unset'
 }
 
 declare const AtAccordion: ComponentClass<AtAccordionProps>
