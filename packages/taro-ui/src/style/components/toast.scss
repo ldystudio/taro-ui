@@ -76,6 +76,7 @@ $at-toast-bg-color: rgba($color: $color-black-0, $alpha: 0.8);
       padding: $spacing-v-sm $spacing-h-lg;
       line-height: $line-height-zh;
       min-width: initial;
+      white-space: nowrap;
 
       .toast-body-content__info {
         margin-top: 0;
