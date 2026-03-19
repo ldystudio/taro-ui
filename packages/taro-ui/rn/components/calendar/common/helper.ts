@@ -43,16 +43,17 @@ export default function generateCalendarGroup(
     const firstDate = date.startOf('month')
     const lastDate = date.endOf('month')
 
-    const preMonthDate = date.subtract(1, 'month')
-
     const list: Calendar.List<Calendar.Item> = []
 
     const nowMonthDays: number = date.daysInMonth() // 获取这个月有多少天
-    const preMonthLastDay = preMonthDate.endOf('month').day() // 获取上个月最后一天是周几
+    // 获取本月1号是周几 (0=周日, 6=周六)
+    const firstDayOfWeek = firstDate.day()
 
-    // 生成上个月的日期
-    for (let i = 1; i <= preMonthLastDay + 1; i++) {
-      const thisDate = firstDate.subtract(i, 'day').startOf('day')
+    // 生成上个月的日期（本月1号是周日时不需要填充）
+    for (let i = 0; i < firstDayOfWeek; i++) {
+      const thisDate = firstDate
+        .subtract(firstDayOfWeek - i, 'day')
+        .startOf('day')
 
       let item = {
         marks: [],
@@ -66,7 +67,6 @@ export default function generateCalendarGroup(
 
       list.push(item)
     }
-    list.reverse()
 
     // 生成这个月的日期
     for (let i = 0; i < nowMonthDays; i++) {
@@ -87,6 +87,10 @@ export default function generateCalendarGroup(
     // 生成下个月的日期
     let i = 1
     while (list.length < TOTAL) {
+      if (list.length % 7 === 0) {
+        break
+      }
+
       const thisDate = lastDate.add(i++, 'day').startOf('day')
       let item = {
         marks: [],
